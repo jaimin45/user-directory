@@ -40,7 +40,8 @@ The following tools help make easier to work with sample code.
 Install the dependencies and devDependencies and start the server.
 
 ```sh
+git clone https://github.com/jaimin45/user-directory.git
 cd user-directory
-npm i
+npm install
 npm run dev
 ```
