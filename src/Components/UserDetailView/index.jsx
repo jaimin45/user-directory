@@ -21,6 +21,17 @@ const UserDetailView = () => {
     }
   }, [])
 
+  // Define an array of objects containing the label and value for each user detail
+  const userDetails = [
+    { label: "ID", value: storedUser?.id },
+    { label: "First Name", value: storedUser?.firstName },
+    { label: "Last Name", value: storedUser?.lastName },
+    { label: "Address", value: storedUser?.address },
+    { label: "Phone Number", value: storedUser?.phoneNumber },
+    { label: "Age", value: storedUser?.age },
+    { label: "Gender", value: storedUser?.gender },
+  ]
+
   return (
     <div style={{ marginTop: "20px" }}>
       <Card variant="outlined">
@@ -28,27 +39,11 @@ const UserDetailView = () => {
           <Typography variant="h5" component="div">
             User Details
           </Typography>
-          <Typography variant="body1">
-            <strong>ID:</strong> {storedUser?.id}
-          </Typography>
-          <Typography variant="body1">
-            <strong>First Name:</strong> {storedUser?.firstName}
-          </Typography>
-          <Typography variant="body1">
-            <strong>Last Name:</strong> {storedUser?.lastName}
-          </Typography>
-          <Typography variant="body1">
-            <strong>Address:</strong> {storedUser?.address}
-          </Typography>
-          <Typography variant="body1">
-            <strong>Phone Number:</strong> {storedUser?.phoneNumber}
-          </Typography>
-          <Typography variant="body1">
-            <strong>Age:</strong> {storedUser?.age}
-          </Typography>
-          <Typography variant="body1">
-            <strong>Gender:</strong> {storedUser?.gender}
-          </Typography>
+          {userDetails.map((detail, index) => (
+            <Typography key={index} variant="body1">
+              <strong>{detail.label}:</strong> {detail.value}
+            </Typography>
+          ))}
         </CardContent>
       </Card>
     </div>
@@ -64,7 +59,7 @@ UserDetailView.propTypes = {
     phoneNumber: PropTypes.string.isRequired,
     age: PropTypes.number.isRequired,
     gender: PropTypes.string.isRequired,
-  }),
+  })
 }
 
 export default UserDetailView
